@@ -1,0 +1,9 @@
+{
+  "name": "treehole-server",
+  "version": "1.0.0",
+  "description": "🌳 Anonymous secret posting server",
+  "main": "index.js",
+  "repository": "https://github.com/senhungnet/treehole-server.git",
+  "author": "Sen Hung Wong <alexwongsenhung@gmail.com>",
+  "license": "MIT"
+}
