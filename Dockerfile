@@ -4,4 +4,4 @@ WORKDIR /opt/treehole-server
 
 EXPOSE 4000
 
-CMD yarn prod
+CMD yarn serve
