@@ -7,6 +7,8 @@ services:
       - 4000:4000
     links:
       - mongodb
+    volumes: 
+      - ./:/opt/treehole-server
   mongodb:
     container_name: treehole-db
     image: mongo
