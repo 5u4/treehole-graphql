@@ -2,12 +2,12 @@ import { Query, Resolver } from "type-graphql";
 
 @Resolver()
 export class StatusResolver {
-    @Query(returns => String, { description: "Server status testing field for greeting client" })
+    @Query(returns => String, { description: "Server status testing" })
     hello() {
         return "Hello";
     }
 
-    @Query(returns => String, { description: "Get server version" })
+    @Query(returns => String)
     version() {
         return process.env.npm_package_version;
     }
