@@ -5,6 +5,7 @@ import { postSchema } from "../schemas/post.schema";
 
 @ObjectType()
 export class Post {
+    static readonly SUBSCRIPTION_TOPIC = "POST";
     static model = model("Post", postSchema);
 
     @Field(type => ID)
