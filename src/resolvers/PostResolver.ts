@@ -1,4 +1,4 @@
-import { Arg, Mutation, Query, Resolver } from "type-graphql";
+import { Arg, Mutation, PubSub, PubSubEngine, Query, Resolver, Root, Subscription } from "type-graphql";
 import { PaginationInput } from "../inputs/pagination/PaginationInput";
 import { PostInput } from "../inputs/post/PostInput";
 import { Post } from "../models/Post";
@@ -15,9 +15,20 @@ export class PostResolver {
 
     @Mutation(returns => Post, { description: "Create a post" })
     async createPost(
-        @Arg("post", { description: "The content of the post" })
-        post: PostInput
+        @Arg("post", { description: "The content of the post" }) post: PostInput,
+        @PubSub() pubSub: PubSubEngine
     ) {
-        return Post.create({ content: post.content });
+        const createdPost = await Post.create({ content: post.content });
+
+        await pubSub.publish(Post.SUBSCRIPTION_TOPIC, createdPost);
+
+        return createdPost;
+    }
+
+    @Subscription(returns => Post, { topics: Post.SUBSCRIPTION_TOPIC })
+    async newPost(
+        @Root() post: Post
+    ) {
+        return post;
     }
 }
