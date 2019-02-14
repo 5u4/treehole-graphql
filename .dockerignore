@@ -5,5 +5,5 @@
 yarn.lock
 node_modules
 schema.graphql
-.env
 docs/
+.git

@@ -5,5 +5,30 @@
   "main": "index.js",
   "repository": "https://github.com/senhungnet/treehole-server.git",
   "author": "Sen Hung Wong <alexwongsenhung@gmail.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "scripts": {
+    "dev": "NODE_ENV=development ts-node-dev -r dotenv/config --files src/server.ts",
+    "graphdoc": "graphdoc -s ./src/schema.graphql -o ./docs -f",
+    "prod": "NODE_ENV=production ts-node -r dotenv/config --files src/server.ts"
+  },
+  "dependencies": {
+    "apollo-server": "^2.3.3",
+    "class-validator": "^0.9.1",
+    "dotenv": "^6.2.0",
+    "graphql": "^14.1.1",
+    "mongoose": "^5.4.9",
+    "reflect-metadata": "^0.1.13",
+    "type-graphql": "^0.16.0",
+    "typeorm": "^0.2.12"
+  },
+  "devDependencies": {
+    "@2fd/graphdoc": "^2.4.0",
+    "@types/dotenv": "^6.1.0",
+    "@types/mongoose": "^5.3.12",
+    "@types/node": "^10.12.20",
+    "ts-node": "^8.0.2",
+    "ts-node-dev": "^1.0.0-pre.32",
+    "tslint": "^5.12.1",
+    "typescript": "^3.2.4"
+  }
 }
